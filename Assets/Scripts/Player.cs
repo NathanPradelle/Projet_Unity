@@ -10,13 +10,18 @@ public class Player : MonoBehaviour
     public float speed;
     public float yawRotationSpeed;
     public float pitchRotationSpeed;
+    public float enduranceMax;
+    public float sprintAcceleration;
 
     private Vector3 directionIntent;
     private bool wantToJump;
+    private float sprintBoost;
+    private float endurance;
     
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        endurance = enduranceMax;
     }
 
     // Update is called once per frame
@@ -42,6 +47,21 @@ public class Player : MonoBehaviour
         {
             directionIntent += Vector3.right;
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (endurance > 20) {
+                sprintBoost = sprintAcceleration;
+                endurance -= 0.1f;
+            }
+            
+        } else {
+            sprintBoost = 1;
+            if (endurance < enduranceMax) {
+                endurance += 0.1f;
+            }
+        }
+        Debug.Log("Endurance: " + endurance);
 
         var mouseXDelta = Input.GetAxis("Mouse X");
 
@@ -85,8 +105,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         var normalizedDirection = directionIntent.normalized;
-        bodyTransform.position += bodyTransform.rotation * normalizedDirection * (Time.deltaTime * speed);
+        bodyTransform.position += bodyTransform.rotation * normalizedDirection * (Time.deltaTime * speed * sprintBoost);
         lava.position += Vector3.up.normalized * (Time.deltaTime / 3);
+
         directionIntent = Vector3.zero;
         
         if (wantToJump)
