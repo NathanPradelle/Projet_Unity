@@ -1738,13 +1738,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 1172621378}
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 963194228}
   playerRigidBody: {fileID: 1172621379}
   speed: 5
   yawRotationSpeed: 150
   pitchRotationSpeed: 150
   enduranceMax: 100
   sprintAcceleration: 2
+  sprintCooldown: 0
 --- !u!4 &2119003425
 Transform:
   m_ObjectHideFlags: 0

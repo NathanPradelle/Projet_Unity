@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
     public float pitchRotationSpeed;
     public float enduranceMax;
     public float sprintAcceleration;
+    public float sprintCooldown;
 
     private Vector3 directionIntent;
     private bool wantToJump;
     private float sprintBoost;
     private float endurance;
+    private bool sprintUtilisable;
     
     private void Start()
     {
@@ -48,17 +50,33 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (endurance > 20) {
+            if (sprintUtilisable) {
                 sprintBoost = sprintAcceleration;
+                if (endurance >= 0) { 
                 endurance -= 0.1f;
+                } else {
+                    sprintUtilisable = false;
+                }
+
+            } else {
+                sprintBoost = 1;
             }
+
+
+
+            
             
         } else {
             sprintBoost = 1;
+            
             if (endurance < enduranceMax) {
-                endurance += 0.1f;
+                    endurance += 0.1f;
+                } else {
+                    sprintUtilisable = true;
+                }
+                
             }
-        }
+        
         Debug.Log("Endurance: " + endurance);
 
         var mouseXDelta = Input.GetAxis("Mouse X");
