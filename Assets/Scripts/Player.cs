@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public float pitchRotationSpeed;
     public float enduranceMax;
     public float sprintAcceleration;
-
     private Vector3 directionIntent;
     private bool wantToJump;
     private float sprintBoost;
@@ -61,7 +60,7 @@ public class Player : MonoBehaviour
                 endurance += 0.1f;
             }
         }
-        Debug.Log("Endurance: " + endurance);
+        //Debug.Log("Endurance: " + endurance);
 
         var mouseXDelta = Input.GetAxis("Mouse X");
 
