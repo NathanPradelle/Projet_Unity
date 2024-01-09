@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform bodyTransform;
+    public Transform lava;
     public Transform cameraTransform;
     public Rigidbody playerRigidBody;
     public float speed;
@@ -11,8 +12,6 @@ public class Player : MonoBehaviour
     public float pitchRotationSpeed;
     public float enduranceMax;
     public float sprintAcceleration;
-    public float sprintCooldown;
-
     private Vector3 directionIntent;
     private bool wantToJump;
     private float sprintBoost;
@@ -28,6 +27,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         if (Input.GetKey(KeyCode.W))
         {
             directionIntent += Vector3.forward;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
                 
             }
         
-        Debug.Log("Endurance: " + endurance);
+        //Debug.Log("Endurance: " + endurance);
 
         var mouseXDelta = Input.GetAxis("Mouse X");
 
@@ -122,6 +122,8 @@ public class Player : MonoBehaviour
     {
         var normalizedDirection = directionIntent.normalized;
         bodyTransform.position += bodyTransform.rotation * normalizedDirection * (Time.deltaTime * speed * sprintBoost);
+        lava.position += Vector3.up.normalized * (Time.deltaTime / 3);
+
         directionIntent = Vector3.zero;
         
         if (wantToJump)
