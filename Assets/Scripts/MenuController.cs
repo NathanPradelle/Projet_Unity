@@ -8,15 +8,7 @@ public class MenuController : MonoBehaviour
 {
 
     public static string Lvlname;
-    public Player Player;
-    private float highscore = 0;
-    public Text highscoreText;
-    
-    void Start()
-    {
-        highscoreText.text = "HIGHSCORES: " + highscore.ToString();
-    }
-    
+
     public void ChangeScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName);
@@ -49,13 +41,6 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
     
-    public void Highest() {
-        if (highscore < Player.pourcent)
-        {
-            highscore = Player.pourcent;
-            highscoreText.text = "HIGHSCORES for " + MenuController.Lvlname + " : " + highscore.ToString();
-        }
-    }
 
     public void Main(string _sceneName)
     {

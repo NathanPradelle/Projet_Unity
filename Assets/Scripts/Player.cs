@@ -20,19 +20,29 @@ public class Player : MonoBehaviour
     public Transform finish;
     public float pourcent;
     public Text scoreText;
+    public MenuController MenuController;
+    public int[] highscore = {0,0,0};
     
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         endurance = enduranceMax;
     }
+    
+    public void Highest() 
+    {
+        if (highscore[int.Parse(MenuController.Lvlname) - 1] < pourcent)
+        {
+            highscore[int.Parse(MenuController.Lvlname) - 1] = (int)pourcent;
+        }
+    }
 
     // Update is called once per frame
     private void Update()
     {   
         
-        pourcent = finish.transform.position.y / bodyTransform.transform.position.y * 100;
-        scoreText.text = pourcent.ToString();
+        pourcent = bodyTransform.transform.position.y / finish.transform.position.y * 100;
+        scoreText.text = pourcent.ToString() + "%";
         
         if (Input.GetKey(KeyCode.W))
         {
@@ -107,7 +117,7 @@ public class Player : MonoBehaviour
             wantToJump = true;
         }
     }
-
+    
     private void FixedUpdate()
     {
         var normalizedDirection = directionIntent.normalized;

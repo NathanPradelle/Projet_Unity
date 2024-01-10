@@ -6,28 +6,13 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public Text scoreText;
-    public Text highscoreText;
     public Player Player;
     public MenuController MenuController;
-    private float highscore = 0;
+    public Text highscoreText;
     
     // Start is called before the first frame update
     void Start()
     {
-        highscoreText.text = "HIGHSCORES: " + highscore.ToString();
-    }
-
-    void Update()
-    {
-        scoreText.text = Player.pourcent.ToString();
-    }
-
-    public void Highest() {
-        if (highscore < Player.pourcent)
-        {
-            highscore = Player.pourcent;
-            highscoreText.text = "HIGHSCORES for " + MenuController.Lvlname + " : " + highscore.ToString();
-        }
+        highscoreText.text = "HIGHSCORES: " + Player.highscore[int.Parse(MenuController.Lvlname) - 1].ToString();
     }
 }
