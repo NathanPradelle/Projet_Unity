@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public float pourcent;
     public Text scoreText;
     public MenuController MenuController;
-    public int[] highscore = {0,0,0};
+    public int[] highscore = { 0, 0, 0 };
     
     private void Start()
     {
