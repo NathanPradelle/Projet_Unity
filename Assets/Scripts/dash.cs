@@ -10,16 +10,31 @@ public class dash : MonoBehaviour{
     public float Speed;
     private Vector3 finalPosition;
     public bool isMoving;
+    public float Cooldown; 
+    private float Timer;
+    private bool Utilisable = true;
+
+    void Start(){
+        Timer = Cooldown;
+    }
 
     void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.F)){
-            useDash();
+        if (Utilisable) {
+            if(Input.GetKey(KeyCode.F)){
+                useDash();
+            }
+        } else{
+            if (Timer > 0) {
+                Timer -= Time.deltaTime;
+            } else {
+                Utilisable = true;
+                Timer = Cooldown;
+            }
         }
-
         if(isMoving){
-            deplacement();
-        }
+                deplacement();
+            }
     }
 
 
@@ -34,6 +49,7 @@ public class dash : MonoBehaviour{
 
     public void useDash(){
         isMoving = true;
+        Utilisable = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         finalPosition = PlayerCam.transform.position + PlayerCam.transform.forward * DashDistance;
         if(Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out hit, DashDistance)){
