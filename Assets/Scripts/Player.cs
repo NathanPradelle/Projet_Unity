@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+   
         if (Input.GetKey(KeyCode.W))
         {
             directionIntent += Vector3.forward;
@@ -130,12 +130,23 @@ public class Player : MonoBehaviour
 
         directionIntent = Vector3.zero;
         
+
         if (wantToJump)
         {
-            playerRigidBody.AddForce(
-                Vector3.up * 5f, ForceMode.VelocityChange
-                );
+            playerRigidBody.AddForce(Vector3.up * 5f, ForceMode.VelocityChange);
             wantToJump = false;
+            DetachFromPlatform();
         }
+
+        if (directionIntent != Vector3.zero)
+        {
+            Vector3 moveDirection = bodyTransform.rotation * directionIntent.normalized * speed * sprintBoost;
+            playerRigidBody.MovePosition(playerRigidBody.position + moveDirection * Time.deltaTime);
+            directionIntent = Vector3.zero;
+        }
+    }
+        private void DetachFromPlatform()
+    {
+        transform.SetParent(null);
     }
 }
