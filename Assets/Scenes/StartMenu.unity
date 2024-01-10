@@ -379,9 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7eea938ecf80e4f9ba8bcbf5b79d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  Lvlname: 
-=======
 --- !u!1 &186274078
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +589,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311018877}
   m_CullTransparentMesh: 1
->>>>>>> master
 --- !u!1 &451622027
 GameObject:
   m_ObjectHideFlags: 0
