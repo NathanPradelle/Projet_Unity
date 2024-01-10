@@ -71,4 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Package
+
+ /[Pp]roject[Ss]ettings/[Pp]ackages/com.unity.probuilder/[Ss]ettings.json
+
 .idea/
