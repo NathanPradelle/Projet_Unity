@@ -48,7 +48,11 @@ public class Player : MonoBehaviour
             directionIntent += Vector3.right;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)  &&
+            Physics.SphereCast(bodyTransform.position + Vector3.up * (0.1f + 0.45f), 0.45f, Vector3.down, 
+                out var Info, 
+                    0.11f)
+            )
         {
             if (sprintUtilisable) {
                 sprintBoost = sprintAcceleration;
@@ -129,7 +133,7 @@ public class Player : MonoBehaviour
         if (wantToJump)
         {
             playerRigidBody.AddForce(
-                Vector3.up * 10f, ForceMode.VelocityChange
+                Vector3.up * 5f, ForceMode.VelocityChange
                 );
             wantToJump = false;
         }
