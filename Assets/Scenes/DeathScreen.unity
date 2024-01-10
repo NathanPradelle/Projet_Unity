@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 813935737}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: Main
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -343,14 +343,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 813935737}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: Main
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Niveau 1
+          m_StringArgument: retry
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &386212418
@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7eea938ecf80e4f9ba8bcbf5b79d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lvlname: 
 --- !u!114 &813935738
 MonoBehaviour:
   m_ObjectHideFlags: 0

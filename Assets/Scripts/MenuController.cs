@@ -5,25 +5,64 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static string Lvlname;
+    
     public void ChangeScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName);
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    public string ChangeLvl(string _sceneName)
+    {
+        SceneManager.LoadScene("niveau " + _sceneName.ToString());
+        string lvlNumber = _sceneName;
+        return lvlNumber;
+    }
+
+    public string NextLvl(string lvlNumber)
+    {
+        string nextlvl = (int.Parse(lvlNumber) + 1).ToString();
+        SceneManager.LoadScene("niveau " + nextlvl);
+        lvlNumber = nextlvl;
+        return lvlNumber;
+
+    }
+
+    public void RetryLvl(string lvlNumber)
+    {
+        SceneManager.LoadScene("niveau " + lvlNumber);
+    }
+
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Main(string _sceneName)
+    {
+        
+        switch (_sceneName)
+        {
+            case "1":
+            case "2":
+            case "3":
+                Lvlname = ChangeLvl(_sceneName);
+                Debug.Log(Lvlname);
+                break;
+            case "retry":
+                RetryLvl(Lvlname);
+                Debug.Log(Lvlname);
+                break;
+            case "nextlvl":
+                Lvlname = NextLvl(Lvlname);
+                Debug.Log(Lvlname);
+                break;
+            default:
+                ChangeScene(_sceneName);
+                Debug.Log(Lvlname);
+                break;
+        }
     }
 }

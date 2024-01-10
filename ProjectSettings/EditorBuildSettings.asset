@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Niveau 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Niveau 2.unity
+    guid: c5a78220017cbf24d818c5ed3a670c20
+  - enabled: 1
+    path: Assets/Scenes/Niveau 3.unity
+    guid: 2894e2298e161564194e30b0c765d278
+  - enabled: 1
     path: Assets/Scenes/LvlSelection.unity
     guid: d15eb1a28f7d3ca4b9129138d4f49425
   - enabled: 1
@@ -20,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 09d6b54b652bb954caf871cae55e2197
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 94a181727308f8d41be3279050e773e4
   m_configObjects: {}
