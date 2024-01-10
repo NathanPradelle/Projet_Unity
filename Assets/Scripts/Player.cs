@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour
     private bool wantToJump;
     private float sprintBoost;
     private float endurance;
+    public Transform finish;
+    public float pourcent;
+    public Text scoreText;
     
     private void Start()
     {
@@ -25,7 +29,10 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     private void Update()
-    {
+    {   
+        
+        pourcent = finish.transform.position.y / bodyTransform.transform.position.y * 100;
+        scoreText.text = pourcent.ToString();
         
         if (Input.GetKey(KeyCode.W))
         {
