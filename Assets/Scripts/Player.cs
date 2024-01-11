@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
     private bool wantToJump;
     private float sprintBoost;
     private float endurance;
+    public Transform finish;
+    public int pourcent;
+    public Text scoreText;
+    public MenuController MenuController;
     private bool sprintUtilisable;
     
     private void Start()
@@ -23,11 +28,25 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         endurance = enduranceMax;
     }
+    
+    public void Highest() 
+    {
+        
+        PlayerPrefs.SetInt("score", pourcent);
+        if (PlayerPrefs.GetInt("highscore" + MenuController.Lvlname) < pourcent || PlayerPrefs.GetInt("highscore" + MenuController.Lvlname) == 0)
+        {
+            PlayerPrefs.SetInt("highscore" + MenuController.Lvlname, pourcent);
+        }
+    }
 
     // Update is called once per frame
     private void Update()
+    {   
+        
+        pourcent = Mathf.RoundToInt(bodyTransform.transform.position.y / finish.transform.position.y * 100);
+        scoreText.text = pourcent.ToString() + "%";
+        
     {
-   
         if (Input.GetKey(KeyCode.W))
         {
             directionIntent += Vector3.forward;
@@ -121,12 +140,12 @@ public class Player : MonoBehaviour
             wantToJump = true;
         }
     }
-
+    
     private void FixedUpdate()
     {
         var normalizedDirection = directionIntent.normalized;
         bodyTransform.position += bodyTransform.rotation * normalizedDirection * (Time.deltaTime * speed * sprintBoost);
-        lava.position += Vector3.up.normalized * (Time.deltaTime / 3);
+        lava.position += Vector3.up.normalized * (Time.deltaTime / 2);
 
         directionIntent = Vector3.zero;
         
