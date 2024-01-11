@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         pourcent = Mathf.RoundToInt(bodyTransform.transform.position.y / finish.transform.position.y * 100);
         scoreText.text = pourcent.ToString() + "%";
         
+    {
         if (Input.GetKey(KeyCode.W))
         {
             directionIntent += Vector3.forward;
@@ -148,12 +149,23 @@ public class Player : MonoBehaviour
 
         directionIntent = Vector3.zero;
         
+
         if (wantToJump)
         {
-            playerRigidBody.AddForce(
-                Vector3.up * 5f, ForceMode.VelocityChange
-                );
+            playerRigidBody.AddForce(Vector3.up * 5f, ForceMode.VelocityChange);
             wantToJump = false;
+            DetachFromPlatform();
         }
+
+        if (directionIntent != Vector3.zero)
+        {
+            Vector3 moveDirection = bodyTransform.rotation * directionIntent.normalized * speed * sprintBoost;
+            playerRigidBody.MovePosition(playerRigidBody.position + moveDirection * Time.deltaTime);
+            directionIntent = Vector3.zero;
+        }
+    }
+        private void DetachFromPlatform()
+    {
+        transform.SetParent(null);
     }
 }
