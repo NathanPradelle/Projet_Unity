@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public int pourcent;
     public Text scoreText;
     public MenuController MenuController;
+    private bool sprintUtilisable;
     
     private void Start()
     {
@@ -65,19 +66,39 @@ public class Player : MonoBehaviour
             directionIntent += Vector3.right;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)  &&
+            Physics.SphereCast(bodyTransform.position + Vector3.up * (0.1f + 0.45f), 0.45f, Vector3.down, 
+                out var Info, 
+                    0.11f)
+            )
         {
-            if (endurance > 20) {
+            if (sprintUtilisable) {
                 sprintBoost = sprintAcceleration;
+                if (endurance >= 0) { 
                 endurance -= 0.1f;
+                } else {
+                    sprintUtilisable = false;
+                }
+
+            } else {
+                sprintBoost = 1;
             }
+
+
+
+            
             
         } else {
             sprintBoost = 1;
+            
             if (endurance < enduranceMax) {
-                endurance += 0.1f;
+                    endurance += 0.1f;
+                } else {
+                    sprintUtilisable = true;
+                }
+                
             }
-        }
+        
         //Debug.Log("Endurance: " + endurance);
 
         var mouseXDelta = Input.GetAxis("Mouse X");
@@ -130,7 +151,7 @@ public class Player : MonoBehaviour
         if (wantToJump)
         {
             playerRigidBody.AddForce(
-                Vector3.up * 10f, ForceMode.VelocityChange
+                Vector3.up * 5f, ForceMode.VelocityChange
                 );
             wantToJump = false;
         }
