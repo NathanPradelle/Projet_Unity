@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public Player Player;
     public MenuController MenuController;
     public Text highscoreText;
+    public Text scoreText;
     
     // Start is called before the first frame update
     void Start()
     {
-        highscoreText.text = "HIGHSCORES: " + Player.highscore[int.Parse(MenuController.Lvlname) - 1].ToString();
+        highscoreText.text = "HIGHSCORES: " + PlayerPrefs.GetInt("highscore" + MenuController.Lvlname).ToString();
+        scoreText.text = "Your score : " + PlayerPrefs.GetInt("score").ToString();
     }
 }

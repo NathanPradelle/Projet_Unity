@@ -536,8 +536,8 @@ MonoBehaviour:
           m_StringArgument: DeathScreen
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 877787253}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 2119003424}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Highest
         m_Mode: 1
         m_Arguments:
@@ -1262,7 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7eea938ecf80e4f9ba8bcbf5b79d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,7 +2229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &2007661934
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2336,7 +2335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7eea938ecf80e4f9ba8bcbf5b79d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2119003424}
 --- !u!1 &2119003423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2377,6 @@ MonoBehaviour:
   pourcent: 0
   scoreText: {fileID: 2007661933}
   MenuController: {fileID: 2051914300}
-  highscore: 000000000000000000000000
 --- !u!4 &2119003425
 Transform:
   m_ObjectHideFlags: 0

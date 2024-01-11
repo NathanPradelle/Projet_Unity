@@ -18,10 +18,9 @@ public class Player : MonoBehaviour
     private float sprintBoost;
     private float endurance;
     public Transform finish;
-    public float pourcent;
+    public int pourcent;
     public Text scoreText;
     public MenuController MenuController;
-    public int[] highscore = { 0, 0, 0 };
     
     private void Start()
     {
@@ -31,9 +30,11 @@ public class Player : MonoBehaviour
     
     public void Highest() 
     {
-        if (highscore[int.Parse(MenuController.Lvlname) - 1] < pourcent)
+        
+        PlayerPrefs.SetInt("score", pourcent);
+        if (PlayerPrefs.GetInt("highscore" + MenuController.Lvlname) < pourcent || PlayerPrefs.GetInt("highscore" + MenuController.Lvlname) == 0)
         {
-            highscore[int.Parse(MenuController.Lvlname) - 1] = (int)pourcent;
+            PlayerPrefs.SetInt("highscore" + MenuController.Lvlname, pourcent);
         }
     }
 
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     private void Update()
     {   
         
-        pourcent = bodyTransform.transform.position.y / finish.transform.position.y * 100;
+        pourcent = Mathf.RoundToInt(bodyTransform.transform.position.y / finish.transform.position.y * 100);
         scoreText.text = pourcent.ToString() + "%";
         
         if (Input.GetKey(KeyCode.W))
@@ -122,7 +123,7 @@ public class Player : MonoBehaviour
     {
         var normalizedDirection = directionIntent.normalized;
         bodyTransform.position += bodyTransform.rotation * normalizedDirection * (Time.deltaTime * speed * sprintBoost);
-        lava.position += Vector3.up.normalized * (Time.deltaTime / 3);
+        lava.position += Vector3.up.normalized * (Time.deltaTime / 2);
 
         directionIntent = Vector3.zero;
         
