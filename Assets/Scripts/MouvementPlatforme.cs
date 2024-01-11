@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouvementPlsateforme : MonoBehaviour
+public class MouvementPlateforme : MonoBehaviour
 {
     public Vector3 vecteurDeplacement;
     public float vitesseDeplacement = 1.0f;
