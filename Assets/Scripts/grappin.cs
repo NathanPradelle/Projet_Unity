@@ -13,9 +13,12 @@ public class grappin : MonoBehaviour{
     public float speed = 10;
     public Transform corde;
     public LineRenderer LR;
+    private int counter = 0;
+
+
     void Update(){
  
-        if(Input.GetKey(KeyCode.G)){
+        if(Input.GetKey(KeyCode.G) && counter > 0){
             useGrappin();
         }
          
@@ -38,7 +41,7 @@ public class grappin : MonoBehaviour{
         transform.position = Vector3.Lerp(transform.position, target, speed * Time.deltaTime / Vector3.Distance(transform.position, target));
         LR.SetPosition(0, corde.position);
         
-        if(Vector3.Distance(transform.position, target) < 1f){
+        if(Vector3.Distance(transform.position, target) < 1.2f){
             isMoving = false;
             LR.enabled = false;
             gameObject.GetComponent<Rigidbody>().useGravity = true;
@@ -53,6 +56,7 @@ public class grappin : MonoBehaviour{
             Debug.Log("l'objet touché est " + hitObject);
             if (hitObject.name == accrocheGrappin.name) {
                 isMoving = true;
+                counter -= 2;
                 target = hit.point;
                 gameObject.GetComponent<Rigidbody>().useGravity = false;
                 LR.enabled = true;
@@ -61,5 +65,10 @@ public class grappin : MonoBehaviour{
             
         }
  
+    }
+
+    public void Counter(){
+        counter += 1;
+        Debug.Log(counter);
     }
 }
