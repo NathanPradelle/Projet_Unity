@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highscoreText.text = "HIGHSCORES: " + PlayerPrefs.GetInt("highscore" + MenuController.Lvlname).ToString();
+        highscoreText.text = "Your Highscore: " + PlayerPrefs.GetInt("highscore" + MenuController.Lvlname).ToString();
         scoreText.text = "Your score : " + PlayerPrefs.GetInt("score").ToString();
     }
 }

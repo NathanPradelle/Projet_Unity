@@ -53,11 +53,17 @@ public class Player : MonoBehaviour
         
     }
 
+    public void Finish()
+    {
+        PlayerPrefs.SetInt("highscore" + MenuController.Lvlname, 100);
+        PlayerPrefs.Save();
+    }
+
     // Update is called once per frame
     private void Update()
     {
         Timer += Time.deltaTime;
-        TimerText.text = Timer.ToString("F1");
+        TimerText.text = Timer.ToString("F1") + 's';
         
         pourcent = Mathf.RoundToInt(bodyTransform.transform.position.y / finish.transform.position.y * 100);
         scoreText.text = pourcent.ToString() + "%";

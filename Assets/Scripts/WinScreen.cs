@@ -14,7 +14,7 @@ public class WinScreen : MonoBehaviour
     void Start()
     {
         TimeText.text = "Your Time : " + PlayerPrefs.GetFloat("Time").ToString("F2");
-        highestTimeText.text = "Best time : " + PlayerPrefs.GetFloat("Timer" + MenuController.Lvlname).ToString("F2");
+        highestTimeText.text = "Your Best Time : " + PlayerPrefs.GetFloat("Timer" + MenuController.Lvlname).ToString("F2");
     }
     
 }
