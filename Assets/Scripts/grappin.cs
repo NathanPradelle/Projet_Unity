@@ -13,7 +13,7 @@ public class grappin : MonoBehaviour{
     public float speed = 10;
     public Transform corde;
     public LineRenderer LR;
-    private int counter = 0;
+    public int counter = 0;
 
 
     void Update(){
