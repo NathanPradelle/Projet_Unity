@@ -13,6 +13,7 @@ public class dash : MonoBehaviour{
     public float Cooldown; 
     private float Timer;
     private bool Utilisable = true;
+    private int counter = 0;
 
     void Start(){
         Timer = Cooldown;
@@ -21,7 +22,7 @@ public class dash : MonoBehaviour{
     void FixedUpdate()
     {
         if (Utilisable) {
-            if(Input.GetKey(KeyCode.F)){
+            if(Input.GetKey(KeyCode.F) && counter > 0){
                 useDash();
             }
         } else{
@@ -32,6 +33,7 @@ public class dash : MonoBehaviour{
                 Timer = Cooldown;
             }
         }
+        
         if(isMoving){
                 deplacement();
             }
@@ -48,8 +50,10 @@ public class dash : MonoBehaviour{
         
 
     public void useDash(){
+        Debug.Log(counter);
         isMoving = true;
         Utilisable = false;
+        counter -= 2;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         finalPosition = bodyTransform.transform.position + bodyTransform.transform.up * DashDistance;
         if(Physics.Raycast(bodyTransform.transform.position, bodyTransform.transform.up, out hit, DashDistance)){
@@ -58,5 +62,9 @@ public class dash : MonoBehaviour{
             
         }
 
+    public void Counter(){
+        counter += 1;
+        Debug.Log(counter);
+    }
     }
 
