@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class dash : MonoBehaviour{
 
-    public Camera PlayerCam;
+    public Transform bodyTransform;
     public float DashDistance;
     public RaycastHit hit;
     public float Speed;
@@ -51,8 +51,8 @@ public class dash : MonoBehaviour{
         isMoving = true;
         Utilisable = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
-        finalPosition = PlayerCam.transform.position + PlayerCam.transform.forward * DashDistance;
-        if(Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out hit, DashDistance)){
+        finalPosition = bodyTransform.transform.position + bodyTransform.transform.up * DashDistance;
+        if(Physics.Raycast(bodyTransform.transform.position, bodyTransform.transform.up, out hit, DashDistance)){
                 finalPosition = hit.point;
             }
             

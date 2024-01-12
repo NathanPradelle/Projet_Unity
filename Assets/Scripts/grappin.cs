@@ -15,7 +15,7 @@ public class grappin : MonoBehaviour{
     public LineRenderer LR;
     void Update(){
  
-        if(Input.GetKey(KeyCode.G)){
+        if(Input.GetKey(KeyCode.A)){
             useGrappin();
         }
          

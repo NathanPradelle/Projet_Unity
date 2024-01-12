@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 7490913533400829098}
   - component: {fileID: 6582573416492303747}
   - component: {fileID: 6448754439239810492}
+  - component: {fileID: 2275757048665105657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -291,10 +292,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200095e7319c6f34383dddb59256489a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCam: {fileID: 4455759529160689338}
+  bodyTransform: {fileID: 6376292514388391965}
   DashDistance: 5
   Speed: 15
   isMoving: 0
+  Cooldown: 0
+--- !u!114 &2275757048665105657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421152093514658396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb4b76d7289a4640be3421ada3a609f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyTransform: {fileID: 6376292514388391965}
+  DashDistance: 5
+  Speed: 15
+  isMoving: 0
+  Cooldown: 0
 --- !u!1 &4647971353963035621
 GameObject:
   m_ObjectHideFlags: 0
