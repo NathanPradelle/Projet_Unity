@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public Image  spriteRenderer;
+    public grappin Grappin;
+    public dash Dash;
     public Image  spriteRenderer2;// Référence vers le composant SpriteRenderer
     // Start is called before the first frame update
     void Start()
@@ -16,9 +18,13 @@ public class Inventory : MonoBehaviour
         Sprite loadedSprite2 = Resources.Load<Sprite>("dash_croix");
         if (loadedSprite != null || loadedSprite2 != null)
         {
-            
-            spriteRenderer.sprite = loadedSprite;
-            spriteRenderer2.sprite = loadedSprite2;
+            if (Dash.counter > 0)
+            {
+                spriteRenderer.sprite = loadedSprite;
+            }
+            else {
+                spriteRenderer2.sprite = loadedSprite2;
+            }
         }
         else
         {
