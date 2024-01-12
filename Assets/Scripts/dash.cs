@@ -13,7 +13,7 @@ public class dash : MonoBehaviour{
     public float Cooldown; 
     private float Timer;
     private bool Utilisable = true;
-    private int counter = 0;
+    public int counter = 0;
 
     void Start(){
         Timer = Cooldown;
