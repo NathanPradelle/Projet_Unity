@@ -1711,7 +1711,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2172670720057496022, guid: fbb60270b5464e542851f916b374ed44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 487016255}
-  m_SourcePrefab: {fileID: 100100000, guid: fbb60270b5464e542851f916b374ed44, type: 3}g
+  m_SourcePrefab: {fileID: 100100000, guid: fbb60270b5464e542851f916b374ed44, type: 3}
 --- !u!1001 &1114501081
 PrefabInstance:
   m_ObjectHideFlags: 0
