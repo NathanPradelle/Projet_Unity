@@ -9,8 +9,9 @@ public class pouvoir : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Event.Invoke();         
-        }
+            Event.Invoke();
+            Destroy(gameObject);
+    }
 
     void Update(){
     transform.Rotate(Vector3.forward, Time.deltaTime * 100);
